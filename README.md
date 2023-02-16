@@ -1,6 +1,7 @@
 # Notes
 
-Testing is just an example, days could be spent on writing tests for this small service.
+- Detailed commit history can be found on the Refactoring branch.
+- Testing is just an example, days could be spent on writing tests for this small service.
 
 # Taxually technical test
 
