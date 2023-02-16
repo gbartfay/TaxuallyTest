@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc;
+using Taxually.TechnicalTest.Contract;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -38,7 +39,7 @@ namespace Taxually.TechnicalTest.Controllers
                     using (var stringwriter = new StringWriter())
                     {
                         var serializer = new XmlSerializer(typeof(VatRegistrationRequest));
-                        serializer.Serialize(stringwriter, this);
+                        serializer.Serialize(stringwriter, request);
                         var xml = stringwriter.ToString();
                         var xmlQueueClient = new TaxuallyQueueClient();
                         // Queue xml doc to be processed
@@ -51,12 +52,5 @@ namespace Taxually.TechnicalTest.Controllers
             }
             return Ok();
         }
-    }
-
-    public class VatRegistrationRequest
-    {
-        public string CompanyName { get; set; }
-        public string CompanyId { get; set; }
-        public string Country { get; set; }
     }
 }
