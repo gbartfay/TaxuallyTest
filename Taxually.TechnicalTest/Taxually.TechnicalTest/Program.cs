@@ -2,8 +2,12 @@ using Taxually.TechnicalTest.Components.Clients;
 using Taxually.TechnicalTest.Components.Clients.Interfaces;
 using Taxually.TechnicalTest.Components.Services;
 using Taxually.TechnicalTest.Components.Services.Interfaces;
+using Taxually.TechnicalTest.Components.Services.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
+
+builder.Services.AddOptions<VatRegistrationServiceOptions>().Bind(config.GetSection(VatRegistrationServiceOptions.Name));
 
 // Add services to the container.
 builder.Services.AddSingleton<ICsvGeneratorService, CsvGeneratorService>();
